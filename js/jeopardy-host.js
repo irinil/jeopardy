@@ -138,6 +138,7 @@ $(function(){
         $('#score-player-1-input').val(score_player_1);
         $('#score-player-2-input').val(score_player_2);
         $('#score-player-3-input').val(score_player_3);
+        $('#score-player-3-input').val(score_player_4);
         $("input[name=control-input][value=" + control + "]").attr('checked', 'checked');
         adjustScores();
     });
@@ -180,9 +181,10 @@ $(function(){
 var score_player_1 = 0;
 var score_player_2 = 0;
 var score_player_3 = 0;
+var score_player_4 = 0;
 var control = 1;
 var rounds = ['jeopardy', 'double-jeopardy', 'final-jeopardy'];
-var playerTranslation = {1: 'Red', 2: 'Blue', 3: 'Green'}
+var playerTranslation = {1: 'Red', 2: 'Blue', 3: 'Green', 4: 'Purple'}
 var currentBoard;
 var currentRound = 0;
 var isTimerActive = false;
@@ -218,7 +220,7 @@ function resetTimer() {
 
 function adjustScores(){
     $('#score-adjust-save').click(function(){
-        for (var i = 1; i < 4; i++) {
+        for (var i = 1; i < 5; i++) {
             var scoreVariableName = 'score_player_' + i;
             var inputName = '#score-player-' + i + '-input';
             var newScoreValue = $(inputName).val();
@@ -246,6 +248,10 @@ function updateScore(){
 	score_player_3 < 0 ? $('#player-3-score').css('color', 'red') : $('#player-3-score').css('color', 'white');
     $('#player-3-score').empty().text(score_text);
 
+    score_player_4 < 0 ? score_text = '-$' + Math.abs(score_player_4).toString() : score_text = "$" + score_player_4.toString();
+	score_player_4 < 0 ? $('#player-4-score').css('color', 'red') : $('#player-4-score').css('color', 'white');
+    $('#player-4-score').empty().text(score_text);
+
 	$('#control-player').empty().text(playerTranslation[control]);
     //$('#player-2-score').empty().text(score_player_2);
     //$('#player-3-score').empty().text(score_player_3);
@@ -270,14 +276,17 @@ function loadBoard() {
     }
     else {
 	    if (rounds[currentRound] === "double-jeopardy") {
-		    if (score_player_1 <= score_player_2 && score_player_1 <= score_player_3) {
+            if (score_player_1 <= score_player_2 && score_player_1 <= score_player_3 && score_player_1 <= score_player_4) {
 			    control = 1;
 		    }
-		    else if (score_player_2 <= score_player_3) {
+		    else if (score_player_2 <= score_player_3 && score_player_2 <= score_player_4 && score_player_2 <= score_player_1)  {
 			    control = 2;
 		    }
-		    else {
+            else if (score_player_3 <= score_player_2 && score_player_3 <= score_player_4)  {
 			    control = 3;
+		    }
+		    else {
+			    control = 4;
 		    }
 	    }
         $('#control-player').empty().text(playerTranslation[control]);
