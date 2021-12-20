@@ -329,7 +329,7 @@ function loadBoard() {
 		    if (score_player_1 <= score_player_2 && score_player_1 <= score_player_3 && score_player_1 <= score_player_4) {
 			    control = 1;
 		    }
-		    else if (score_player_2 <= score_player_3 && score_player_2 <= score_player_4)  {
+		    else if (score_player_2 <= score_player_3 && score_player_2 <= score_player_4 && score_player_2 <= score_player_1)  {
 			    control = 2;
 		    }
             else if (score_player_3 <= score_player_2 && score_player_3 <= score_player_4)  {
