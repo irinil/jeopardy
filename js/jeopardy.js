@@ -163,7 +163,7 @@ $(function(){
         $('#score-player-1-input').val(score_player_1);
         $('#score-player-2-input').val(score_player_2);
         $('#score-player-3-input').val(score_player_3);
-        $('#score-player-4-input').val(score_player_3);
+        $('#score-player-4-input').val(score_player_4);
 
         $("input[name=control-input][value=" + control + "]").attr('checked', 'checked');
         adjustScores();
