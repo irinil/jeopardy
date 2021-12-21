@@ -212,7 +212,7 @@ var score_player_3 = 0;
 var score_player_4 = 0;
 var control = 1;
 var rounds = ['jeopardy', 'double-jeopardy', 'final-jeopardy'];
-var playerTranslation = {1: 'Red', 2: 'Blue', 3: 'Green',4:'Purple'}
+var playerTranslation = {1: 'Red', 2: 'Blue', 3: 'Green', 4:'Purple'}
 var currentBoard;
 var currentRound = 0;
 var isTimerActive = false;
@@ -284,8 +284,6 @@ function updateScore(){
 
 
 	$('#control-player').empty().text(playerTranslation[control]);
-    //$('#player-2-score').empty().text(score_player_2);
-    //$('#player-3-score').empty().text(score_player_3);
 }
 
 function loadBoard() {

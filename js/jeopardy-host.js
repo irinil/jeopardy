@@ -253,8 +253,6 @@ function updateScore(){
     $('#player-4-score').empty().text(score_text);
 
 	$('#control-player').empty().text(playerTranslation[control]);
-    //$('#player-2-score').empty().text(score_player_2);
-    //$('#player-3-score').empty().text(score_player_3);
 }
 
 function loadBoard() {
